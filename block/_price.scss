@@ -1,0 +1,10 @@
+.price {
+    display: flex;
+    @include tablets {
+      justify-content: center;
+    }
+  }
+  
+  .price__text {
+    font-size: 2.25rem;
+  }

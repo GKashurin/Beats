@@ -1,0 +1,18 @@
+.headline {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-top: 4.25rem;
+    @include tablets {
+      padding-top: 12.25rem;
+    }
+  }
+  
+  .headline__subtitle {
+    color: #666666;
+    padding: 0 23%;
+
+    @include phones {
+      padding: 0 12%;
+    }
+  }

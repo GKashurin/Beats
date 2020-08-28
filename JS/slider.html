@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider</title>
+    <link rel="stylesheet" href="./slider.css" />
+  </head>
+  <body>
+    <div class="simple-slider-container">
+      <a class="arrow" id="left" href="#">←</a>
+      <div class="slider">
+        <ul class="items" id="items">
+          <li class="item">1</li>
+          <li class="item">2</li>
+          <li class="item">3</li>
+          <li class="item">4</li>
+          <li class="item">5</li>
+          <li class="item">6</li>
+          <li class="item">7</li>
+          <li class="item">8</li>
+          <li class="item">9</li>
+        </div>
+      </li>
+      <a class="arrow" id="right" href="#">→</a>
+    </div>
+    <script>
+      const left = document.querySelector('#left');
+      const right = document.querySelector('#right');
+      const itemsList = document.querySelector('#items');
+      const computedstyles = window.getComputedStyle(itemsList);
+      const items = document.querySelectorAll('.item');
+
+      const minRight = 0;
+      const itemWidth = getComputedStyle(items[0]).width;
+      const step = parseInt(itemWidth);
+      const preShownItems = 300 / step;
+      const maxRight = (items.length - preShownItems) * step;
+      let currentRight = 0;
+
+      itemsList.style.right = currentRight;
+        
+        right.addEventListener('click', event => {
+          event.preventDefault();
+
+          if (currentRight < maxRight) {
+            currentRight += step;
+            itemsList.style.right = `${currentRight}px`;
+          }
+        })
+        
+        left.addEventListener('click', event => {
+          event.preventDefault();
+
+          if (currentRight > minRight) {
+            currentRight -= step;
+            itemsList.style.right = `${currentRight}px`;
+          }
+        })
+
+
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,14 @@
+.header {
+  min-height: 4.0625rem;
+  display: flex;
+  align-items: center;
+  @include tablets {
+    justify-content: space-between;
+  }
+  }
+  
+.header__contacts-phone {
+  @include tablets {
+    display: none;
+  }
+}

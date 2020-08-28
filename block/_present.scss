@@ -1,0 +1,49 @@
+.present {
+    max-width: 20.625rem;
+    @include tablets {
+      max-width: 90%;
+      margin: 0 auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 15rem;
+    }
+  }
+  
+  .present__title {
+    font-weight: bold;
+    font-size: 3rem;
+    line-height: 3.25rem;
+    text-transform: uppercase;
+    margin-bottom: 1.0625rem;
+
+    @include tablets {
+      font-size: 2.95rem;
+      line-height: 4rem;
+      margin-bottom: 0.5rem;
+
+      @include phones {
+        padding: 0 16%;
+      }
+    }
+  }
+  
+  .present__subtitle {
+    min-height: 3.125rem;
+    font-size: 1.125rem;
+    line-height: 1.5625rem;
+    margin-bottom: 3.0625rem;
+    
+    @include tablets {
+      font-size: 1.5rem;
+      line-height: 1.4rem;
+      padding: 0 16%;
+      margin-bottom: 1.4rem;
+
+      @include phones {
+        padding: 0 3%;
+      }
+    }
+  }

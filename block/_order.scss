@@ -1,0 +1,5 @@
+.order {
+    @include tablets {
+        padding-top: 10rem;
+    }
+}
