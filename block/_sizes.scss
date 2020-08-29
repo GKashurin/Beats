@@ -1,0 +1,53 @@
+.sizes {
+    height: 100%;
+
+    &__list {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        display: flex;       
+    }
+
+    &__item {
+        display: flex;
+    }
+}
+
+.sizes__title {
+    position: relative;
+    width: 100px;
+
+
+    &--silver {
+        background: silver;
+    }
+    &--black {
+        background: #151515;
+    }
+    &--red {
+        background: red;
+    }
+}
+
+
+.sizes__item-description {
+    background: rgb(186, 231, 186);
+    width: 0;
+    position: relative;
+    overflow: hidden;
+    transition: width .7s;
+}
+
+.sizes__container {
+    padding: 40px 73px 45px 26px;
+}
+
+.sizes__close {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}

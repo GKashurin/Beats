@@ -6,7 +6,8 @@
 
 .reviews__display {
     background: #f5f5f5;
-    padding: 3.75rem 2.8125rem 2.125rem;
+    padding-right: 2.8125rem;
+    padding-left: 2.8125rem;
     overflow: hidden;
     position: relative;
 
@@ -43,6 +44,7 @@
     position: static;
     opacity: 1;
     pointer-events: unset;
+    display: flex;
 }
 
 .reviews__list {
@@ -60,7 +62,7 @@ display: flex;
 justify-content: center;
 margin-top: 2.0625rem}
 
-.reviews__avatar {
+.reviews__display-inner {
     width: 15.875rem;
     height: 16.25rem;
 
@@ -70,7 +72,7 @@ margin-top: 2.0625rem}
     }
 }
 
-.reviews__avatar-img {
+.reviews__img {
     object-fit: cover;
     width: 100%;
     height: 100%;
@@ -104,4 +106,3 @@ margin-top: 2.0625rem}
     font-weight: bold;
     color: black;
 }
-
