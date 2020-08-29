@@ -1,4 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap");
+.accordion {
+  background: #ccc;
+  position: relative;
+  height: 100vh;
+  min-height: 36.111111rem;
+  display: flex;
+  flex-direction: column; }
+  .accordion__container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start; }
+  .accordion__slide-title {
+    margin-top: 115px;
+    margin-left: 84px;
+    font-weight: bold;
+    font-size: 48px;
+    text-transform: uppercase;
+    color: #ffffff; }
+
 .advantages__list {
   display: flex;
   width: 50%; }
@@ -584,7 +605,8 @@ img {
 
 .reviews__display {
   background: #f5f5f5;
-  padding: 3.75rem 2.8125rem 2.125rem;
+  padding-right: 2.8125rem;
+  padding-left: 2.8125rem;
   overflow: hidden;
   position: relative; }
   @media screen and (max-width: 768px) {
@@ -616,7 +638,8 @@ img {
 .reviews__item--active {
   position: static;
   opacity: 1;
-  pointer-events: unset; }
+  pointer-events: unset;
+  display: flex; }
 
 .reviews__list {
   position: relative;
@@ -632,15 +655,15 @@ img {
   justify-content: center;
   margin-top: 2.0625rem; }
 
-.reviews__avatar {
+.reviews__display-inner {
   width: 15.875rem;
   height: 16.25rem; }
   @media screen and (max-width: 768px) {
-    .reviews__avatar {
+    .reviews__display-inner {
       width: 8.6rem;
       height: 8.6rem; } }
 
-.reviews__avatar-img {
+.reviews__img {
   object-fit: cover;
   width: 100%;
   height: 100%; }
@@ -674,13 +697,14 @@ img {
   background: #fff;
   min-height: 40.625rem;
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  height: 100vh; }
 
 .section--grey .container {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  height: 100vh;
   padding-bottom: 5rem; }
 
 .section--grey {
@@ -688,7 +712,8 @@ img {
 
 .section--font-color--white {
   color: #fff;
-  background: url("./img/bg_delivery.jpg") center center/cover no-repeat; }
+  background: url("./img/bg_delivery.jpg") center center/cover no-repeat;
+  height: 100vh; }
 
 .section__title {
   font-size: 3rem;
@@ -937,3 +962,42 @@ img {
 .socials__icon {
   height: 36px;
   width: 36px; }
+
+.sizes {
+  height: 100%; }
+  .sizes__list {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex; }
+  .sizes__item {
+    display: flex; }
+
+.sizes__title {
+  position: relative;
+  width: 100px; }
+  .sizes__title--silver {
+    background: silver; }
+  .sizes__title--black {
+    background: #151515; }
+  .sizes__title--red {
+    background: red; }
+
+.sizes__item-description {
+  background: #bae7ba;
+  width: 0;
+  position: relative;
+  overflow: hidden;
+  transition: width .7s; }
+
+.sizes__container {
+  padding: 40px 73px 45px 26px; }
+
+.sizes__close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  border: none;
+  background: transparent;
+  cursor: pointer; }

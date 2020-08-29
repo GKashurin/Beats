@@ -73,6 +73,7 @@ $('.interactive-avatar__link').click(e => {
   curItem.addClass('active').siblings().removeClass('active');
 });
 
+
 // Modal
 const validateFields = (form, fieldsArray) => {
   fieldsArray.forEach((field) => {
@@ -85,10 +86,11 @@ const validateFields = (form, fieldsArray) => {
   const errorFields = form.find(".input-error");
   return errorFields.length == 0;
 }
+ 
 
 $('.form').submit(e => {
   e.preventDefault();
-
+  
   const form = $(e.currentTarget);
   const name = form.find("[name='name']");
   const phone = form.find("[name='phone']");
@@ -124,7 +126,7 @@ $('.form').submit(e => {
     request.fail(data => {
       const message = data.responseJSON.message;
         content.text(message);
-        modal.addClass("error-modal");   
+        modal.addClass("error-modal"); 
     });
 
     request.always(() => {
@@ -141,3 +143,25 @@ $(".app-submit-btn").click (e => {
 
   $.fancybox.close();
 })
+
+
+//accordion 
+// const mesureWidth = () => {
+//   return 500;
+// }
+
+// //const openItem = item => {
+// const hiddenContent = item.find(".sizes__item-description");
+// const reqWidth = mesureWidth();
+
+// hiddenContent.width(reqWidth);
+// }
+
+// $(".sizes__title").on("click", e => {
+// e.preventDefault();
+
+// const $this = $(e.currentTarget);
+// const item = $this.closest(".sizes__item");
+
+// openItem(item);
+// });

@@ -3,6 +3,7 @@ $phones: 480px;
 
 @import url("https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap");
 @import "./block/media.scss";
+@import "./block/accordion.scss";
 @import "./block/advantages";
 @import "./block/benefits";
 @import "./block/contacts";
@@ -30,3 +31,4 @@ $phones: 480px;
 @import "./block/_map.scss";
 @import "./block/footer.scss";
 @import "./block/socials";
+@import "./block/sizes";
