@@ -1,4 +1,4 @@
-.interactive-avatar {
+.reviews__switcher-item {
     width: 5rem;
     height: 5rem;
     border: 0.375rem solid transparent;
@@ -7,15 +7,15 @@
     position: relative;
 }
 
-.interactive-avatar:hover {
+.reviews__switcher-item:hover {
     border-color: #E01F3D;
 }
 
-.interactive-avatar--active {
+.reviews__switcher-item--active {
 border-color: #E01F3D;
 }
 
-.interactive-avatar__link {
+.reviews__switcher-item-link {
     position: absolute;
     top: 0;
     left: 0;
@@ -24,7 +24,7 @@ border-color: #E01F3D;
     display: block;
 }
 
-.interactive-avatar__img {
+.reviews__switcher-img {
     display: block;
     width: 100%;
     height: 100%;

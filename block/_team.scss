@@ -1,11 +1,7 @@
 .team {
     display: flex;
     justify-content: space-between;
-    @include tablets {
-      padding: 0 10px;
-      flex-direction: column;
-      align-items: center;
-    }
+
   }
 
   .team__title {
@@ -16,12 +12,18 @@
   }
 
   .team--version--desktop {
-    position: absolute;
+    @include tablets {
+      display: none;
+    }
   }
 
   .team--version--mobile {
+    display: none;
     @include tablets {
       display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 15px;
     }
   }
   
@@ -43,12 +45,14 @@
   }
   
   .team__content {
-    text-align: center;
-    position: absolute;
     overflow: hidden;
-    top: 100%;
     height: 0;
     transition: height .3s;
+    top: 100%;
+    position: absolute;
+    @include tablets {
+      position: inherit;
+    }
   }
   
   .team__present {
