@@ -735,6 +735,14 @@ img {
       flex-direction: column;
       align-items: center; } }
 
+.products__wripper {
+  display: flex; }
+  @media screen and (max-width: 768px) {
+    .products__wripper {
+      display: flex;
+      flex-direction: column;
+      align-items: center; } }
+
 .products__content {
   display: flex;
   justify-content: space-around; }
