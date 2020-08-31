@@ -759,7 +759,7 @@ img {
 .products__info {
   display: flex;
   flex-direction: column;
-  max-width: 40%; }
+  max-width: 42%; }
   @media screen and (max-width: 768px) {
     .products__info {
       max-width: 100%;
