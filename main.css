@@ -192,6 +192,7 @@
   margin-top: 2.1875rem; }
   @media screen and (max-width: 768px) {
     .form {
+      margin-top: 1rem;
       flex-direction: column;
       padding: 0px 19% 2rem 19%; } }
   @media screen and (max-width: 480px) {
@@ -473,10 +474,6 @@ img {
 .modal__content {
   margin-bottom: 15px;
   color: #000; }
-
-@media screen and (max-width: 768px) {
-  .order {
-    padding-top: 10rem; } }
 
 .present {
   max-width: 20.625rem; }
