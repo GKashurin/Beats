@@ -57,8 +57,8 @@ $('.products').bxSlider({
 
 //reviews
 const findBlockByAlias = alias => {
-return $('reviews__item').filter((ndx, item) => {
-  return $(item).attr('data-linked-with') == alias
+return $('.reviews__item').filter((ndx, item) => {
+  return $(item).attr('data-linked-with') === alias
 });
 }
 $('.reviews__switcher-item-link').click(e => {
@@ -69,8 +69,15 @@ $('.reviews__switcher-item-link').click(e => {
   const itemToShow = findBlockByAlias(target);
   const curItem = $this.closest('.reviews__switcher-item');
 
-  itemToShow.addClass('active').siblings().removeClass('active');
-  curItem.addClass('active').siblings().removeClass('active');
+  itemToShow
+  .addClass('reviews__item--active')
+  .siblings()
+  .removeClass('reviews__item--active');
+
+  curItem
+  .addClass('reviews__switcher-item--active')
+  .siblings()
+  .removeClass('reviews__switcher-item--active');
 });
 
 
@@ -115,7 +122,7 @@ $('.form').submit(e => {
         to: to.val(),
       },
       
-      error: data => {
+      error: _data => {
         
       }
     });
