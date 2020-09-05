@@ -338,14 +338,16 @@ body {
 .wrapper {
   position: relative;
   width: 100%;
-  min-height: 100%;
-  overflow-x: hidden;
-  height: 100%; }
+  overflow: hidden; }
 
 .container {
   width: 62.5rem;
   margin: 0 auto;
   max-width: 100%; }
+
+.maincontent {
+  height: 100%;
+  transform: translateY(0%); }
 
 a {
   color: inherit;
@@ -927,10 +929,14 @@ img {
   overflow: hidden; }
 
 .map-section {
-  background: url("./img/map.jpg") center bottom/cover no-repeat;
   min-height: 41rem;
-  height: 100%;
+  height: 100vh;
+  width: 100%;
   position: relative; }
+
+.map {
+  width: 600px;
+  height: 600px; }
 
 .footer {
   min-height: 5.4375rem;
@@ -1012,3 +1018,54 @@ img {
   border: none;
   background: transparent;
   cursor: pointer; }
+
+.player {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%; }
+  .player.paused .player__start {
+    width: 14px;
+    height: 22px;
+    border: none; }
+    .player.paused .player__start:after, .player.paused .player__start:before {
+      content: "";
+      display: block;
+      position: absolute;
+      width: 5px;
+      top: 0;
+      bottom: 0; }
+    .player.paused .player__start:after {
+      right: 0; }
+    .player.paused .player__start:before {
+      left: 0; }
+
+.player--active .player__splash {
+  display: none; }
+
+.player__playback {
+  height: 16px;
+  width: 446px;
+  position: relative; }
+  .player__playback:before {
+    content: "";
+    height: 4px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    background: #cccccc;
+    display: block;
+    transform: translateY(-50%); }
+
+.player__playback-button {
+  background: #626262;
+  border-radius: 50px;
+  border: none;
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(-50%, -50%); }

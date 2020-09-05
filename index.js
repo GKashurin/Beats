@@ -6,7 +6,7 @@ let links = document.querySelectorAll('.menu__link');
 links.forEach(function (element) {
   element.addEventListener('click', toggleMenu);
 })
-
+// крестик закрытие
 function toggleMenu() {
   hamburger.classList.toggle('hamburger--active');
   overlay.classList.toggle('overlay--active');
@@ -17,14 +17,14 @@ hamburger.addEventListener('click', toggleMenu);
 
 
 //team
-const openItem = item => {
+const openItem = item /*это название массива*/ => {
   const container = item.closest('.team__item');
-  const contentBlock = container.find('.team__content');
+  const contentBlock = container.find('.team__content'); //в тим айтем ищем тим контент
   const textBlock = contentBlock.find('.team__content-block');
   const reqHeight = textBlock.height();
 
   container.addClass('active');
-  contentBlock.height(reqHeight);
+  contentBlock.height(reqHeight); // блоку присваиваю высоту в зависимости от кол-ва текста при открытии
   }
 
   const closeEveryItem = container => {
@@ -37,7 +37,7 @@ const openItem = item => {
 
 $('.team__present').click(e => {
   const $this = $(e.currentTarget);
-  const container = $this.closest('.team');
+  const container = $this.closest('.team');  // closest = ближайший
   const elemContainer = $this.closest('.team__item');
 
   if (elemContainer.hasClass('active')) {
@@ -57,16 +57,18 @@ $('.products').bxSlider({
 
 //reviews
 const findBlockByAlias = alias => {
-return $('.reviews__item').filter((ndx, item) => {
-  return $(item).attr('data-linked-with') === alias
+return $('.reviews__item').filter((ndx, item) => {  // item - это переменная
+return $(item).attr('data-linked-with') === alias
 });
 }
+
 $('.reviews__switcher-item-link').click(e => {
   e.preventDefault();
-
+   // из свичера берем значение атр. дата-оупен в переменную таргет. Передаем этот таргет в фильтр findBlockByAlias. 
+   //Он сравнивает это значение с data-linked-with в элементе  reviews__item
   const $this = $(e.currentTarget);
   const target = $this.attr('data-open');
-  const itemToShow = findBlockByAlias(target);
+  const itemToShow = findBlockByAlias(target);  
   const curItem = $this.closest('.reviews__switcher-item');
 
   itemToShow
@@ -82,6 +84,9 @@ $('.reviews__switcher-item-link').click(e => {
 
 
 // Modal
+// let btnSubmit = document.getElementById("btnModal");
+// btnSubmit.addEventListener('click', toggleMenu);
+
 const validateFields = (form, fieldsArray) => {
   fieldsArray.forEach((field) => {
     field.removeClass("input-error");
@@ -153,22 +158,164 @@ $(".app-submit-btn").click (e => {
 
 
 //accordion 
-// const mesureWidth = () => {
+//  const mesureWidth = () => {
 //   return 500;
-// }
+//  }
 
-// //const openItem = item => {
-// const hiddenContent = item.find(".sizes__item-description");
-// const reqWidth = mesureWidth();
+//  //const openItem = item => {
+//  const hiddenContent = item.find(".sizes__item-description");
+//  const reqWidth = mesureWidth();
 
-// hiddenContent.width(reqWidth);
-// }
+//  hiddenContent.width(reqWidth);
+//  }
 
-// $(".sizes__title").on("click", e => {
-// e.preventDefault();
+//  $(".sizes__title").on("click", e => {
+//  e.preventDefault();
 
-// const $this = $(e.currentTarget);
-// const item = $this.closest(".sizes__item");
+//  const $this = $(e.currentTarget);
+//  const item = $this.closest(".sizes__item");
 
-// openItem(item);
-// });
+//  openItem(item);
+//  });
+
+
+
+//player
+let player;
+const playerContainer = $(".player");
+let eventsInit = () => {
+  $(".player__start").click(e => {
+    e.preventDefault();
+
+    if (playerContainer.hasClass("paused")) {
+      player.pauseVideo()
+    } else {
+      player.playVideo();
+    }
+  });
+
+  $(".player__playback").click(e => {
+    const bar = $(e.currentTarget);
+    const clickedPosition = e.originalEvent.layerX;
+    const newButtonPositionPercent = (clickedPosition / bar.width()) * 100;
+    const newPlaybackPositionSec = (player.getDuration() / 100) * newButtonPositionPercent;
+    
+    $(".player__playback-button").css({
+      left: `$(newButtonPositionPercent)%`
+    });
+    player.seekTo(newPlaybackPositionSec);
+  });
+  $('.player__splash').click(e => {
+    player.playVideo();
+  })
+};
+
+const formatTime = timeSec => {
+  const roundTime = Math.round(timeSec);
+
+  const minutes = addZero(Math.floor(roundTime / 60));
+  const seconds = addZero(roundTime - minutes * 60);
+
+  function addZero(num) {
+    return num < 10 ? `0${num}` : num;
+  }
+
+  return `$(minutes) : $(seconds)`;
+}
+
+const onPlayerReady = () => {
+  let interval;
+  const durationSec = player.getDuration();
+  $(".player__duration-estimate").text(formatTime(durationSec));
+
+  if (typeof interval != 'undefined') {
+    clearInterval(interval);
+  }
+  interval = setInterval(() => {
+    const completedSec = player.getCurrentTime();
+    const completedPercent = (completedSec / durationSec) *100;
+
+    $(".player__playback-button").css({
+      left: `${completedPercent}%`
+    });
+    $(".player__duration-completed").text(formatTime(completedSec));
+  }, 1000);
+};
+
+const onPlayerStateChange = event => {
+  switch (event.data) {
+//     Возвращает состояние проигрывателя. Возможные значения:
+// -1 – воспроизведение видео не началось
+// 0 – воспроизведение видео завершено
+// 1 – воспроизведение
+// 2 – пауза
+// 3 – буферизация
+// 5 – видео находится в очереди
+    case 1:
+      playerContainer.addClass('active');
+      playerContainer.addClass('paused');
+      break;
+
+    case 2:
+      playerContainer.removeClass('active');
+      playerContainer.removeClass('paused');
+      break
+  }
+}
+      
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('yt-player', {
+    height: '405',
+    width: '660',
+    videoId: 'M7lc1UVf-VE',
+    events: {
+      onReady: onPlayerReady,
+      onStateChange: onPlayerStateChange
+    },
+    playerVars: {
+      controls: 0,
+      disablekb: 0,
+      showinfo: 0,
+      rel: 0,
+      autoplay: 0,
+      modestbranding: 0
+    }
+  });
+}
+
+eventsInit ();
+
+
+//map
+let myMap;
+const init = () => {
+  myMap = new ymaps.Map("map", {
+    center: [59.935274, 30.312388],
+    zoom: 11,
+    controls: []
+  });
+
+  const coords = [
+    [59.94554327989287, 30.38935262114668],
+    [59.91142323563909, 30.50024587065841],
+    [59.88693161784606, 30.319658102103713],
+    [59.97033574821672, 30.315194906302924],
+  ];
+
+  const myCollection = new ymaps.GeoObjectCollection({}, {
+   draggable: false,
+   iconLayout: 'default#image',
+   iconImageHref: './svg/map.svg',
+   iconImageSize: [46, 57],
+   iconImageOffset: [-35, -52] 
+  });
+
+  coords.forEach(coord => {
+    myCollection.add(new ymaps.Placemark(coord));
+  })
+  
+  myMap.geoObjects.add(myCollection);
+
+  myMap.behaviors.disable('scrollZoom');
+ };
+ ymaps.ready(init);
