@@ -26,9 +26,8 @@ html {
       .wrapper {
         position: relative;
         width: 100%;
-        min-height: 100%;
-        overflow-x: hidden;
-        height: 100%;
+        overflow: hidden;
+        //height: 100%;
       }
       
       .container {
@@ -37,6 +36,11 @@ html {
         max-width: 100%;
       }
       
+      .maincontent {
+        height: 100%;
+        transform: translateY(0%);
+      }
+
       a {
         color: inherit;
         text-decoration: none;

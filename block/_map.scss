@@ -1,6 +1,10 @@
 .map-section {
-    background: url("./img/map.jpg") center bottom / cover no-repeat;
     min-height: 41rem;
-    height: 100%;
+    height: 100vh;
+    width: 100%;
     position: relative;
+}
+.map {
+    width: 600px;
+    height: 600px;
 }
