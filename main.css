@@ -271,6 +271,9 @@
 
 .form__controls--bottom {
   margin-bottom: 3.25rem; }
+  @media screen and (max-width: 768px) {
+    .form__controls--bottom {
+      margin-bottom: 2.25rem; } }
 
 .header {
   min-height: 4.0625rem;
@@ -356,9 +359,7 @@ body {
   max-width: 100%; }
 
 .maincontent {
-  height: 100%;
-  transition: transform 1s;
-  will-change: transform; }
+  height: 100%; }
 
 a {
   color: inherit;
@@ -643,6 +644,9 @@ img {
   display: flex;
   justify-content: center;
   margin-top: 2.0625rem; }
+  @media screen and (max-width: 768px) {
+    .reviews__switcher {
+      margin-top: 0.625rem; } }
 
 .reviews__display-inner {
   width: 15.875rem;
@@ -918,7 +922,7 @@ img {
   background-repeat: 10px;
   width: 100%;
   position: absolute;
-  background-color: #fff;
+  background-color: black;
   top: 0;
   left: 0;
   transition: all 0.4s; }
@@ -935,10 +939,12 @@ img {
   opacity: 0; }
 
 .hamburger--active .hamburger__plank:nth-child(2) {
-  transform: rotate(45deg); }
+  transform: rotate(45deg);
+  background-color: #fff; }
 
 .hamburger--active .hamburger__plank:nth-child(3) {
-  transform: rotate(-45deg) translateY(-4px) translateX(5px); }
+  transform: rotate(-45deg) translateY(-4px) translateX(5px);
+  background-color: #fff; }
 
 .overlay--active {
   left: 0;
