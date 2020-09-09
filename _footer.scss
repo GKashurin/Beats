@@ -1,0 +1,25 @@
+.footer {
+  min-height: 5.4375rem;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  @include phones {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0, 1.5rem;
+  @include phones {
+    flex-direction: column;
+  }
+}

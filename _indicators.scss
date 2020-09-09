@@ -1,0 +1,28 @@
+.indicators {
+    display: flex;
+    @include tablets {
+      justify-content: center;
+    }
+  }
+  
+  .indicators__menu {
+    display: flex;
+    flex-direction: column;
+    margin-right: 5rem;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  
+  .indicators__menu-recharge, .indicators__menu-weight {
+    color: #666666;
+  }
+  
+  .indicators__menu-time, .indicators__menu-easy {
+    font-weight: bold;
+  }
+
+  .price__button {
+    margin-top: 1rem;
+    margin-left: 1rem;
+  }

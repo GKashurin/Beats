@@ -1,0 +1,84 @@
+.benefits {
+  display: flex;
+  margin-top: 2.5rem;
+  @include tablets {
+    padding-bottom: 20rem;
+  }
+  @include phones {
+    flex-direction: column;
+    width: 67%;
+  }
+}
+
+.benefits__item {
+  flex: 1;
+  margin: 0 3%;
+  position: relative;
+  @include phones {
+    margin: 0 0;
+    display: -webkit-box;
+  }
+}
+
+.benefits__item:before {
+    content: url('./img/Combined\ shape\ 2204.jpg');
+    position: absolute;
+    top: 1.875rem;
+    right: 0;
+    transform: translateX(50%);
+  
+    @include phones {
+      display: none;
+    }
+  }
+  
+  .benefits__item:first-child {margin-left: 0;}
+  .benefits__item:last-child {margin-right: 0;}
+
+  .benefits__item:last-child:before {
+    display: none;
+  }
+
+
+.benefit {
+  text-align: center;
+  @include phones {
+    text-align: left;
+  }
+}
+
+.benefits__image-wrapper {
+  display: inline-block;
+  width: 7.875rem;
+  height: 7.875rem;
+  position: relative;
+  background: #f5f5f5;
+  border-radius: 50%;
+  overflow: hidden;
+  @include tablets {
+  width: 8rem;
+  height: 8rem;
+  }
+}
+
+.benefits__img {
+  height: 4.0625rem;
+  width: 3.75rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  @include tablets {
+    height: 4.1rem;
+    width: 4.85rem;
+  }
+}
+
+.benefits__title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.benefits__desc {
+    color: #666666;
+}

@@ -1,0 +1,39 @@
+.accordion {
+    background: url("./img/accordion.png") center center/cover no-repeat;
+    position: relative;
+    height: 100vh;
+    min-height: 36.111111rem;
+    display: flex;
+    flex-direction: column;
+
+&__container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+
+&__slide {
+   &-title {
+       margin-top: 115px;
+       margin-left: 84px;
+       font-weight: bold;
+       font-size: 48px;
+       text-transform: uppercase;
+       color: #ffffff;
+
+       &-container {
+           width: 50%;
+           height: 100%;
+        }
+    }
+    &-tabs {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: flex-end;
+    }
+}
+}
