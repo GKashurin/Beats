@@ -128,14 +128,6 @@
         <section class="section section--grey">
             <div class="container">
                 <div class="products-slider">
-                    <!-- <div class="products-slider__arrows">
-                        <a href="#" class="arrow">
-                        <img src="./svg/left.svg" alt="arrow-left" class="arrow__icon">
-                        </a>
-                        <a href="#" class="arrow">
-                            <img src="./svg/right.svg" alt="arrow-right" class="arrow__icon">
-                        </a> 
-                    </div> -->
                     <ul class="products">
                         <li class="products__content">
                             <div class="products__wripper">
@@ -164,7 +156,7 @@
                                     <div class="price">
                                         <div class="price__text">14990 ₽</div>
                                         <div class="price__button">
-                                            <a href="#" class="btn">Заказать</a>
+                                            <a href="#" class="btn btn--slider">Заказать</a>
                                         </div>
                                     </div>
                                 </div>
@@ -199,7 +191,7 @@
                                     <div class="price">
                                         <div class="price__text">14990 ₽</div>
                                         <div class="price__button">
-                                            <a href="#" class="btn">Заказать</a>
+                                            <a href="#" class="btn btn--slider">Заказать</a>
                                         </div>
                                     </div>
                                 </div>
@@ -317,66 +309,61 @@
             </div>
         </section>
         <section class="accordion">
-            <div class="accordion__slide-title-container">
-                <h2 class="accordion__slide-title">цвета</h2>
-            </div>
-            <div class="sizes">
-                <ul class="sizes__list">
-                    <li class="sizes__item">
-                        <a class="sizes__title sizes__title--silver" href="">
-                            <div class="sizes-title__text">"Атласное серебро"</div>
-                        </a>
-                        <div class="sizes__item-description">
-                            <div class="sizes__container">
-                                <button class="sizes__close" type="button">X</button>
-                                <div class="sizes__text">
+            <div class="accordion__container">
+                <div class="accordion__slide-title-container">
+                    <h2 class="accordion__slide-title"></h2>
+                </div>
+                <div class="accordion__slide-tabs">
+                    <div class="sizes">
+                        <ul class="sizes__list">
+                            <li class="sizes__item sizes__item--active sizes__item--silver">
+                                <div class="sizes__item-title">
+                                    <span>Атласное серебро</span>
+                                </div>
+                                <div class="sizes__item-description">
+                                   <p>
                                     Наушники Beats Solo3 могут работать до 40 часов без подзарядки, чтобы вы могли
                                     пользоваться ими каждый день. 5‑минутной зарядки Fast Fuel хватит ещё на 3 часа
                                     воспроизведения. Фирменное звучание Beats в наушниках с технологией Bluetooth класса
                                     1 будет сопровождать вас повсюду — куда бы вы ни отправились.
                                     Расположение чашек с мягкими амбушюрами можно регулировать — вы сможете носить их
                                     целый день.
+                                   </p>
                                 </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="sizes__item">
-                        <a class="sizes__title sizes__title--black" href="">
-                            <div class="sizes-title__text">"Матовый черный"</div>
-                        </a>
-                        <div class="sizes__item-description">
-                            <div class="sizes__container">
-                                <button class="sizes__close" type="button">X</button>
-                                <div class="sizes__text">
-                                    Наушники Beats Solo3 могут работать до 40 часов без подзарядки, чтобы вы могли
-                                    пользоваться ими каждый день. 5‑минутной зарядки Fast Fuel хватит ещё на 3 часа
-                                    воспроизведения. Фирменное звучание Beats в наушниках с технологией Bluetooth класса
-                                    1 будет сопровождать вас повсюду — куда бы вы ни отправились.
-                                    Расположение чашек с мягкими амбушюрами можно регулировать — вы сможете носить их
-                                    целый день.
+                            </li>
+                            <li class="sizes__item sizes__item--black">
+                                <div class="sizes__item-title">
+                                    <span>Черный матовый</span>
                                 </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="sizes__item">
-                        <a class="sizes__title sizes__title--red" href="">
-                            <div class="sizes-title__text">"Красный цмтрус"</div>
-                        </a>
-                        <div class="sizes__item-description">
-                            <div class="sizes__container">
-                                <button class="sizes__close" type="button">X</button>
-                                <div class="sizes__text">
-                                    Наушники Beats Solo3 могут работать до 40 часов без подзарядки, чтобы вы могли
-                                    пользоваться ими каждый день. 5‑минутной зарядки Fast Fuel хватит ещё на 3 часа
-                                    воспроизведения. Фирменное звучание Beats в наушниках с технологией Bluetooth класса
-                                    1 будет сопровождать вас повсюду — куда бы вы ни отправились.
-                                    Расположение чашек с мягкими амбушюрами можно регулировать — вы сможете носить их
-                                    целый день.
+                                <div class="sizes__item-description">
+                                    <p>
+                                        Наушники Beats Solo3 могут работать до 40 часов без подзарядки, чтобы вы могли
+                                        пользоваться ими каждый день. 5‑минутной зарядки Fast Fuel хватит ещё на 3 часа
+                                        воспроизведения. Фирменное звучание Beats в наушниках с технологией Bluetooth класса
+                                        1 будет сопровождать вас повсюду — куда бы вы ни отправились.
+                                        Расположение чашек с мягкими амбушюрами можно регулировать — вы сможете носить их
+                                        целый день.
+                                    </p>
                                 </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                            </li>
+                            <li class="sizes__item sizes__item--red">
+                                <div class="sizes__item-title">
+                                    <span>Красный цитрус</span>
+                                </div>
+                                <div class="sizes__item-description">
+                                    <p>
+                                        Наушники Beats Solo3 могут работать до 40 часов без подзарядки, чтобы вы могли
+                                        пользоваться ими каждый день. 5‑минутной зарядки Fast Fuel хватит ещё на 3 часа
+                                        воспроизведения. Фирменное звучание Beats в наушниках с технологией Bluetooth класса
+                                        1 будет сопровождать вас повсюду — куда бы вы ни отправились.
+                                        Расположение чашек с мягкими амбушюрами можно регулировать — вы сможете носить их
+                                        целый день.
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="section">

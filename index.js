@@ -82,11 +82,6 @@ $('.reviews__switcher-item-link').click(e => {
   .removeClass('reviews__switcher-item--active');
 });
 
-
-// Modal
-// let btnSubmit = document.getElementById("btnModal");
-// btnSubmit.addEventListener('click', toggleMenu);
-
 const validateFields = (form, fieldsArray) => {
   fieldsArray.forEach((field) => {
     field.removeClass("input-error");
@@ -158,116 +153,132 @@ $(".app-submit-btn").click (e => {
 
 
 //accordion 
-//  const mesureWidth = () => {
-//   return 500;
-//  }
+const tabs = document.querySelectorAll('.sizes__item-title');
 
-//  //const openItem = item => {
-//  const hiddenContent = item.find(".sizes__item-description");
-//  const reqWidth = mesureWidth();
+Array.from(tabs).map(item => {
+    item.addEventListener('click', function ($event) {
+        console.log($event.target.textContent);
 
-//  hiddenContent.width(reqWidth);
-//  }
+        if ($event.target.tagName === 'DIV') {
+            let parentElement = $event.target.parentElement;
+            const descriptionElement = parentElement.querySelector('.sizes__item-description');
+            fillActiveClass(descriptionElement);
+        }
 
-//  $(".sizes__title").on("click", e => {
-//  e.preventDefault();
+        if ($event.target.tagName === 'SPAN') {
+            let parentElement = $event.target.parentElement.parentElement;
+            fillActiveClass(parentElement);
+        }
 
-//  const $this = $(e.currentTarget);
-//  const item = $this.closest(".sizes__item");
+        document.querySelectorAll('.sizes__item-description').forEach(item => {
+            if (item.parentElement.querySelector('.sizes__item-title').textContent !== $event.target.textContent) {
+                item.classList.remove('sizes__item-description--active');
+            }
+        });
+    });
+});
 
-//  openItem(item);
-//  });
+function fillActiveClass(el) {
+    el.classList.contains('sizes__item-description--active') ?
+        el.classList.remove('sizes__item-description--active')
+        : el.classList.add('sizes__item-description--active');
+}
 
 
 
 //player
-let player;
-const playerContainer = $(".player");
-let eventsInit = () => {
-  $(".player__start").click(e => {
-    e.preventDefault();
 
-    if (playerContainer.hasClass("paused")) {
-      player.pauseVideo()
+let player;
+
+const formatTime = timeSec => {
+  const roundTime = Math.round(timeSec);
+
+  const minutes = Math.floor(roundTime / 60);
+  const seconds = roundTime - minutes * 60;
+
+  const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
+
+  return `${minutes}:${formattedSeconds}`;
+};
+
+const onPlayerReady = () => {
+  let interval;
+  let durationSec = player.getDuration();
+
+  $(".player__duration-estimate").text(formatTime(durationSec));
+
+  if (typeof interval !== "undefined") {
+    clearInterval(interval);
+  }
+
+  interval = setInterval(() => {
+    const completedSec = player.getCurrentTime();
+    const completedPercent = (completedSec / durationSec) * 100;
+
+    $(".player__playback-button").css({
+      left: `${completedPercent}%`
+    });
+
+    $(".player__duration-completed").text(formatTime(completedSec));
+  }, 1000);
+};
+
+const eventsInit = () => {
+  $(".player__start").on("click", e => {
+    e.preventDefault();
+    const btn = $(e.currentTarget);
+
+    if (btn.hasClass("paused")) {
+      player.pauseVideo();
     } else {
       player.playVideo();
     }
   });
 
-  $(".player__playback").click(e => {
+  $(".player__playback").on("click", e => {
     const bar = $(e.currentTarget);
-    const clickedPosition = e.originalEvent.layerX;
-    const newButtonPositionPercent = (clickedPosition / bar.width()) * 100;
-    const newPlaybackPositionSec = (player.getDuration() / 100) * newButtonPositionPercent;
-    
+    const newButtonPosition = e.pageX - bar.offset().left;
+    const buttonPosPercent = (newButtonPosition / bar.width()) * 100;
+    const newPlayerTimeSec = (player.getDuration() / 100) * buttonPosPercent;
+
     $(".player__playback-button").css({
-      left: `$(newButtonPositionPercent)%`
+      left: `${buttonPosPercent}%`
     });
-    player.seekTo(newPlaybackPositionSec);
+
+    player.seekTo(newPlayerTimeSec);
   });
-  $('.player__splash').click(e => {
+
+  $(".player__splash").on("click", e => {
     player.playVideo();
-  })
-};
-
-const formatTime = timeSec => {
-  const roundTime = Math.round(timeSec);
-
-  const minutes = addZero(Math.floor(roundTime / 60));
-  const seconds = addZero(roundTime - minutes * 60);
-
-  function addZero(num) {
-    return num < 10 ? `0${num}` : num;
-  }
-
-  return `$(minutes) : $(seconds)`;
-}
-
-const onPlayerReady = () => {
-  let interval;
-  const durationSec = player.getDuration();
-  $(".player__duration-estimate").text(formatTime(durationSec));
-
-  if (typeof interval != 'undefined') {
-    clearInterval(interval);
-  }
-  interval = setInterval(() => {
-    const completedSec = player.getCurrentTime();
-    const completedPercent = (completedSec / durationSec) *100;
-
-    $(".player__playback-button").css({
-      left: `${completedPercent}%`
-    });
-    $(".player__duration-completed").text(formatTime(completedSec));
-  }, 1000);
+  });
 };
 
 const onPlayerStateChange = event => {
+  const playerButton = $(".player__start");
+  /*
+  -1 (воспроизведение видео не начато)
+  0 (воспроизведение видео завершено)
+  1 (воспроизведение)
+  2 (пауза)
+  3 (буферизация)
+  5 (видео подают реплики).
+   */
   switch (event.data) {
-//     Возвращает состояние проигрывателя. Возможные значения:
-// -1 – воспроизведение видео не началось
-// 0 – воспроизведение видео завершено
-// 1 – воспроизведение
-// 2 – пауза
-// 3 – буферизация
-// 5 – видео находится в очереди
-    case 1:
-      playerContainer.addClass('active');
-      playerContainer.addClass('paused');
+    case 1: 
+      $('.player__wrapper').addClass('active');
+      playerButton.addClass("paused");
       break;
-
-    case 2:
-      playerContainer.removeClass('active');
-      playerContainer.removeClass('paused');
-      break
+    case 2: 
+      playerButton.removeClass("paused");
+      break;
   }
-}
-      
+};
+
 function onYouTubeIframeAPIReady() {
-  player = new YT.Player('yt-player', {
-    height: '405',
-    width: '660',
-    videoId: 'M7lc1UVf-VE',
+  player = new YT.Player("yt-player", {
+    height: "405",
+    width: "660",
+    videoId: "zmg_jOwa9Fc",
     events: {
       onReady: onPlayerReady,
       onStateChange: onPlayerStateChange
@@ -283,7 +294,7 @@ function onYouTubeIframeAPIReady() {
   });
 }
 
-eventsInit ();
+eventsInit();
 
 
 //map
@@ -319,3 +330,61 @@ const init = () => {
   myMap.behaviors.disable('scrollZoom');
  };
  ymaps.ready(init);
+
+
+ // scroll
+
+//  const sections = $("section");
+//  const display = $(".maincontent");
+
+//  let inScroll = false;
+
+//  sections.first().addclass("active");
+
+//  const performTransition = sectionEq => {
+//    if (inScroll == false) {
+//      inScroll = true;
+//     const position = sectionEq * -100;
+
+//    display.css ({
+//      transform: `translateY(${position}%)`,
+//    });
+
+//    sections.eq(sectionEq).addClass("active").siblings().removeClass("active");
+//     setTimeout(() => {
+//       inScroll = false;
+//     }, 1300);
+//   }
+//  }
+
+//  const scrollViewport = direction => {
+//   const activeSection = sections.filter(".active");
+//   const nextSection = activeSection.next();
+//   const prevSection = activeSection.prev();
+
+//    if (direction == "next" && nextSection.length) {
+//     performTransition(nextSection.index())
+//    }
+   
+//    if (direction == "prev" && prevSection.length) {
+//     performTransition(prevSection.index())
+//    }
+//  }
+
+//  $(window).on("wheel", e => {
+//    const deltaY = e.originalEvent.deltaY;
+
+//    if (deltaY > 0) {
+//      scrollViewport("next");
+//    }
+
+//    if (deltaY < 0) {
+//      scrollViewport("prev")
+//    }
+//  });
+
+ 
+//  $(window).on("keydown", e => {
+//    console.log(e.keyCode);
+
+//  })
