@@ -4,7 +4,7 @@
     text-align: center;
     padding-top: 4.25rem;
     @include tablets {
-      padding-top: 12.25rem;
+      padding-top: 1.25rem;
     }
   }
   
@@ -12,7 +12,12 @@
     color: #666666;
     padding: 0 23%;
 
+    @include tablets {
+      padding: 0 4%;
+    }
+
     @include phones {
-      padding: 0 12%;
+      padding: 0 4%;
+      line-height: 1rem;
     }
   }

@@ -27,7 +27,7 @@
     background-repeat: 10px;
     width: 100%;
     position: absolute;
-    background-color: #fff;
+    background-color: black;
     top: 0;
     left: 0;
     transition: all 0.4s;
@@ -47,9 +47,11 @@
   }
   .hamburger--active .hamburger__plank:nth-child(2) {
     transform: rotate(45deg);
+    background-color: #fff;
   }
   .hamburger--active .hamburger__plank:nth-child(3) {
     transform: rotate(-45deg) translateY(-4px) translateX(5px);
+    background-color: #fff;
   }
   
   .overlay--active {

@@ -2,7 +2,7 @@
   display: flex;
   margin-top: 2.5rem;
   @include tablets {
-    padding-bottom: 20rem;
+    margin-top: 1.5rem;
   }
   @include phones {
     flex-direction: column;
@@ -59,6 +59,11 @@
   width: 8rem;
   height: 8rem;
   }
+  @include phones {
+    margin-right: 0.2rem;
+    width: 7rem;
+    height: 7rem;
+  }
 }
 
 .benefits__img {
@@ -77,8 +82,20 @@
 .benefits__title {
   font-size: 1.5rem;
   font-weight: bold;
+  @include tablets {
+    line-height: 2rem
+  }
+  @include phones {
+    line-height: 1.8rem;
+  }
 }
 
 .benefits__desc {
     color: #666666;
+    @include tablets {
+      line-height: 1.7rem;
+    }
+    @include phones {
+      line-height: 1.3rem;
+    }
 }

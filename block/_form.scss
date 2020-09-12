@@ -87,5 +87,8 @@
 
 .form__controls--bottom{
     margin-bottom: 3.25rem;
+    @include tablets {
+        margin-bottom: 2.25rem;
+    }
 }
 
