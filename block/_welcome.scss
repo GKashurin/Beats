@@ -5,33 +5,37 @@
 .welcome {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 2.8125rem;
+  align-items: center;
+  height: 100%;
   @include tablets {
     display: flex;
     flex-direction: column-reverse;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
   }
 }
 
 .welcome__col--left {
   margin-top: 5.1875rem;
   @include tablets {
-    margin-top: 2rem;
+    margin-top: 1rem;
     text-align: center;
   }
 }
 
 .welcome__col--right {
-  width: 30.5625rem;
-  height: 30.5625rem;
+  width: 29.5625rem;
+  height: 29.5625rem;
   border-radius: 50%;
-  margin-top: 1.25rem;
   margin-right: 4.375rem;
   
   @include tablets {
-    width: 23.5rem;
-    height: 23.5rem;
-    margin-right: 0
+    width: 26rem;
+    height: 26rem;
+    margin-right: 0;
+  }
+  @include phones {
+    width: 17rem;
+    height: 17rem;
   }
 }
