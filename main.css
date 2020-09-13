@@ -996,11 +996,11 @@ img {
   position: relative; }
 
 .map {
-  width: 600px;
-  height: 600px; }
-
-.map-section .container {
-  width: 71.5rem; }
+  width: 70rem;
+  height: 60rem; }
+  @media screen and (max-width: 480px) {
+    .map {
+      width: 30rem; } }
 
 .footer {
   min-height: 5.4375rem;
