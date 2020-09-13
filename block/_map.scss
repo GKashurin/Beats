@@ -5,10 +5,13 @@
     position: relative;
 }
 .map {
-    width: 600px;
-    height: 600px;
+    width: 70rem;
+    height: 60rem;
+    @include phones {
+        width: 30rem;
+    }
 }
 
-.map-section .container {
-    width: 71.5rem;
-}
+// .map-section .container {
+//     width: 71.5rem;
+// }
