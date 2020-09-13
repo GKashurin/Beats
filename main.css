@@ -999,6 +999,9 @@ img {
   width: 600px;
   height: 600px; }
 
+.map-section .container {
+  width: 71.5rem; }
+
 .footer {
   min-height: 5.4375rem;
   justify-content: space-between;
