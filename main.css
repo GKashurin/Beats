@@ -914,7 +914,7 @@ img {
   margin-top: 5.1875rem; }
   @media screen and (max-width: 768px) {
     .welcome__col--left {
-      margin-top: 2rem;
+      margin-top: 1rem;
       text-align: center; } }
 
 .welcome__col--right {
@@ -924,8 +924,8 @@ img {
   margin-right: 4.375rem; }
   @media screen and (max-width: 768px) {
     .welcome__col--right {
-      width: 28rem;
-      height: 28rem;
+      width: 26rem;
+      height: 26rem;
       margin-right: 0; } }
   @media screen and (max-width: 480px) {
     .welcome__col--right {
