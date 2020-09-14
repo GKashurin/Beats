@@ -374,8 +374,8 @@ body {
 .wrapper {
   position: relative;
   width: 100%;
-  overflow: hidden;
-  min-height: 100%; }
+  overflow-x: hidden;
+  height: 100%;}
 
 .container {
   width: 62.5rem;
@@ -740,7 +740,7 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; }
+  height: 100% }
   @media screen and (max-width: 768px) {
     .section {
       align-items: center; } }
@@ -752,7 +752,7 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh; }
+  height: 100%; }
 
 .section--grey {
   background: #f5f5f5; }
@@ -760,7 +760,7 @@ img {
 .section--font-color--white {
   color: #fff;
   background: url("./img/bg_delivery.jpg") center center/cover no-repeat;
-  height: 100vh; }
+  height: 100%; }
 
 .section__title {
   font-size: 3rem;
